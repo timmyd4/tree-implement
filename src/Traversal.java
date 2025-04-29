@@ -20,10 +20,7 @@ public class Traversal {
   public static void preOrder(TreeNode current)
   {
     //if null return
-    if(current == null)
-    {
-      return;
-    }
+    if(current == null) return;
     //write current
     System.out.println(current.value);
     //search left
