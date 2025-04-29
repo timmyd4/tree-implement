@@ -12,7 +12,8 @@ public class Traversal {
     root.right.left = new TreeNode(72);
     root.right.left.right = new TreeNode(42);
 
-    System.out.println(root.value);
+    //System.out.println(root.value);
+    preOrder(root);
   }
 
 
@@ -24,12 +25,10 @@ public class Traversal {
       return;
     }
     //write current
+    System.out.println(current.value);
     //search left
+    preOrder(current.left);
     //search right
-
-    
-
-    
-
+    preOrder(current.right);
   }
 }
