@@ -2,10 +2,34 @@ public class Traversal {
   public static void main(String[] args) {
 
     TreeNode root = new TreeNode(10, null, null);
-    TreeNode root2pointO = new TreeNode(15);
+    
 
+    root.left = new TreeNode(15);
+    root.left.left = new TreeNode(39);
+    root.left.right = new TreeNode(21);
+
+    root.right = new TreeNode(20);
+    root.right.left = new TreeNode(72);
+    root.right.left.right = new TreeNode(42);
 
     System.out.println(root.value);
-    System.out.println(root2pointO.value);
+  }
+
+
+  public static void preOrder(TreeNode current)
+  {
+    //if null return
+    if(current == null)
+    {
+      return;
+    }
+    //write current
+    //search left
+    //search right
+
+    
+
+    
+
   }
 }
