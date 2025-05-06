@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Traversal {
@@ -49,6 +51,7 @@ public class Traversal {
     preOrderIter(root); 
 
   }
+
   public static void preOrderIter(TreeNode<?> current)
   {
       //Stack = []
@@ -64,15 +67,6 @@ public class Traversal {
         stack.push(node.right);
         stack.push(node.left);
       }
-      //  node = stack.pop();
-      //  if null: continue 
-      //  print node.value
-      //  stack.push(node.left)
-      //  stack.push(node.right)
-
-
-
-
   }
 
   public static void preOrder(TreeNode<?> current)
@@ -103,6 +97,24 @@ public class Traversal {
     inOrder(current.right);
   }
 
+
+  public static void levelOrder(TreeNode<?> current)
+  {
+      //Stack = []
+      Queue<TreeNode<?>> queue = new LinkedList<>();
+      //stack.push(current);
+      queue.add(current);
+      //while(!stack.isEmpty())
+      while(!queue.isEmpty())
+      {
+        TreeNode<?> node = queue.poll();
+        if(node == null) continue;
+        System.out.println(node.value);
+        queue.add(node.left);
+        queue.add(node.right);
+      }
+  }
+
   public static void greaterThan(TreeNode<Integer> current, int limit)
   {
     if (current == null) return;
@@ -117,3 +129,5 @@ public class Traversal {
     return countNodes(current.left) + countNodes(current.right) + 1;
   }
 }
+
+
