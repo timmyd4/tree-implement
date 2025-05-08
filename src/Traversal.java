@@ -1,5 +1,8 @@
+import java.util.Currency;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
 
 public class Traversal {
@@ -15,14 +18,14 @@ public class Traversal {
     root.right.left = new TreeNode<>(72);
     root.right.left.right = new TreeNode<>(42);
 
-    preOrder(root);
-    System.out.println("-----------------------------");
-    postOrder(root);
-    System.out.println("-----------------------------");
-    inOrder(root);
-    System.out.println("-----------------------------");
-    greaterThan(root, 12);
-    System.out.println("-----------------------------");
+    //preOrder(root);
+    //System.out.println("-----------------------------");
+    //postOrder(root);
+    //System.out.println("-----------------------------");
+    //inOrder(root);
+    //System.out.println("-----------------------------");
+    //greaterThan(root, 12);
+    //System.out.println("-----------------------------");
 
 
     TreeNode<String> stringRoot = new TreeNode<>("hello", null, null);
@@ -46,11 +49,47 @@ public class Traversal {
       current = node;
     }
 
-    preOrder(root);
-    System.out.println("$#_$@_#$@)_$#@)$_@#($)#@$_$@($(@)$(@#)_$)"); 
-    preOrderIter(root); 
+    //preOrder(root);
+    //System.out.println("$#_$@_#$@)_$#@)$_@#($)#@$_$@($(@)$(@#)_$)"); 
+    //preOrderIter(root);
+    
+    // levelOrder(root); // <------>
+
+    // Set<Integer> set = convertToSet(root);
+    // System.out.println(set);
+
+    System.out.println(countDistinctValues(root));
 
   }
+
+  public static int countDistinctValues(TreeNode<?> root)
+  {
+
+    Set<?> values = convertToSet(root);
+
+    return values.size();
+  }
+
+
+  public static <T> Set<T> convertToSet(TreeNode<T> root)
+  {
+      Set<T> set = new HashSet<>();
+
+      //Recruisve Add
+      convertToSetHelper(root, set);
+
+      return set;
+  }
+
+  public static <T> void convertToSetHelper(TreeNode<T> current, Set<T> set)
+  {
+    if(current == null) return;
+    set.add(current.value);
+
+    convertToSetHelper(current.left, set);
+    convertToSetHelper(current.right, set);
+  }
+
 
   public static void preOrderIter(TreeNode<?> current)
   {
@@ -100,11 +139,8 @@ public class Traversal {
 
   public static void levelOrder(TreeNode<?> current)
   {
-      //Stack = []
       Queue<TreeNode<?>> queue = new LinkedList<>();
-      //stack.push(current);
       queue.add(current);
-      //while(!stack.isEmpty())
       while(!queue.isEmpty())
       {
         TreeNode<?> node = queue.poll();
